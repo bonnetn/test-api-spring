@@ -4,6 +4,8 @@ import com.example.websiteapi.entities.WebsiteWithID;
 import com.example.websiteapi.services.WebsiteService;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import lombok.CustomLog;
 import lombok.NonNull;
 import lombok.Value;
 import lombok.val;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
+@CustomLog
 public class WebsiteRestController {
     @Autowired
     private WebsiteService websiteService;
@@ -32,6 +35,11 @@ public class WebsiteRestController {
      */
     @GetMapping("/website")
     public List<JSONWebsiteResult> fetch(@RequestParam("ids") List<String> ids) {
+        log.info("get_website_request", ImmutableMap.of(
+                "test", "lol",
+                "mdr", "swag"
+        ));
+
         val uuids = ids.stream()
                 .map(this::mapStringToUUID)
                 .collect(ImmutableList.toImmutableList());
