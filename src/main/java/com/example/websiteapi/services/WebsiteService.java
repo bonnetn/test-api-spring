@@ -4,6 +4,8 @@ import com.example.websiteapi.entities.WebsiteWithID;
 import com.example.websiteapi.repositories.WebsiteRepository;
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import lombok.CustomLog;
 import lombok.NonNull;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import java.util.UUID;
  * Service to access websites.
  */
 @Service
+@CustomLog
 public class WebsiteService {
     @Autowired
     private WebsiteRepository websiteRepository;
@@ -29,6 +32,9 @@ public class WebsiteService {
      * @return all the websites that match the IDs provided
      */
     public ImmutableList<WebsiteWithID> getWebsitesById(@NonNull ImmutableCollection<UUID> ids) {
+        log.debug("get_websites_by_id", ImmutableMap.of(
+                "ids", ids.toString()
+        ));
         if (ids.isEmpty()) {
             return ImmutableList.of();
         }
