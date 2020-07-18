@@ -25,12 +25,15 @@ ext {
 dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-//	implementation 'com.okta.spring:okta-spring-boot-starter:1.4.0'
-//	implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'com.google.guava:guava:29.0-jre'
     implementation 'net.logstash.logback:logstash-logback-encoder:6.4'
     implementation 'org.javatuples:javatuples:1.2'
     implementation 'io.sentry:sentry-logback:1.7.30'
+//	implementation 'com.okta.spring:okta-spring-boot-starter:1.4.0'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
+
 	compileOnly 'org.projectlombok:lombok'
 //	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
